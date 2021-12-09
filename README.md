@@ -1,7 +1,8 @@
 # Django-Practice
-To practice Django - Youtube Tutorial</br>
-To be familiar with using github</br>
-Youtube Playlist: https://www.youtube.com/playlist?list=PLEYmkoTDkhFwshtF_c00ZE8BbwsEoVQQg by 배우는 프로그래머</br>
+## The aim of this project
+  1. To practice Django - Youtube Tutorial   
+  2. To be familiar with using github   
 
-After finishing the tutorial, I'll make my own website.</br>
-
+Youtube Tutorial Playlist: https://www.youtube.com/playlist?list=PLEYmkoTDkhFwshtF_c00ZE8BbwsEoVQQg by 배우는 프로그래머   
+   
+After finishing the tutorial, the next project will be my own website using various frameworks.   
