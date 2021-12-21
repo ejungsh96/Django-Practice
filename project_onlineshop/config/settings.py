@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import json
 import pymysql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,7 +22,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b)#ve^z89zv_8r)=1#q8s!vy(%3_4z39ztgm4^f^i)=r*!z&sn'
+secret_file = BASE_DIR / 'secrets.json'
+
+with open(secret_file) as f:
+    secrets = json.loads(f.read())
+
+def get_secret(setting, secrets=secrets):
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
+
+SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -83,7 +96,7 @@ DATABASES = {
         'HOST': 'onlineshop.crpmqrucc6gt.ap-northeast-2.rds.amazonaws.com',        
         'NAME': 'onlineshop',
         'USER': 'admin',     # It's good to avoid names such as 'admin' or 'root' that are easy to assume.
-        'PASSWORD': 'admin12345',
+        'PASSWORD': # db password,
         'PORT': '3306',
     }
 }
