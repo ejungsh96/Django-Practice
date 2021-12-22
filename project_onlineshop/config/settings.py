@@ -52,6 +52,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
+    'django.contrib.sites',     # manages urls
+    'allauth',                  # main feature
+    'allauth.account',          # manages accounts coming via social login
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.naver',     # naver login
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -96,7 +102,7 @@ DATABASES = {
         'HOST': 'onlineshop.crpmqrucc6gt.ap-northeast-2.rds.amazonaws.com',        
         'NAME': 'onlineshop',
         'USER': 'admin',     # It's good to avoid names such as 'admin' or 'root' that are easy to assume.
-        'PASSWORD': # db password,
+        'PASSWORD': 'admin12345',
         'PORT': '3306',
     }
 }
@@ -136,7 +142,34 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'    # the page after login
+
+AWS_ACCESS_KEY_ID = # my access key
+AWS_SECRET_ACCESS_KEY = # my secret access key
+
+AWS_REGION = 'ap-northeast-2'
+AWS_STORAGE_BUCKET_NAME = # my storage bucket name
+AWS_S3_CUSTOM_DOMAIN = f's3.{AWS_REGION}.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl':'max-age=86400'
+}
+AWS_DEFAULT_ACL = None
+AWS_LOCATION = ''
+
+STATIC_URL = f'http://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+DEFAULT_FILE_STORAGE = 'config.s3media.MediaStorage'
+
+CART_ID = 'cart_item'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
