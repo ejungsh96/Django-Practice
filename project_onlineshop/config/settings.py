@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.naver',     # naver login
     'cart',
+    'coupon',
 ]
 
 MIDDLEWARE = [
@@ -154,7 +155,7 @@ AWS_ACCESS_KEY_ID = # my access key
 AWS_SECRET_ACCESS_KEY = # my secret access key
 
 AWS_REGION = 'ap-northeast-2'
-AWS_STORAGE_BUCKET_NAME = # my storage bucket name
+AWS_STORAGE_BUCKET_NAME = # my bucket name
 AWS_S3_CUSTOM_DOMAIN = f's3.{AWS_REGION}.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}'
 
 AWS_S3_FILE_OVERWRITE = False

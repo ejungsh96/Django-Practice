@@ -49,7 +49,7 @@ Shopping Cart
             <tr>
                 <td>{{cart.coupon.code}} coupon ({{cart.coupon.amount}})</td>
                 <td colspan="4"></td>
-                <td>- {{cart.get_discount_total|floatformat:"2"}}</td>
+                <td>{{cart.get_discount_total|floatformat:"2"}}</td>
             </tr>
             {% endif %}
         <tr class="total">
@@ -62,7 +62,7 @@ Shopping Cart
     <p>
         Add Coupon:
     </p>
-    <form action="{ % url 'coupon:add' %}" method="post">
+    <form action="{% url 'coupon:add' %}" method="post">
         {% csrf_token %}
         {{add_coupon}}
         <input type="submit" value="Add">
