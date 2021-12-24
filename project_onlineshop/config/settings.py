@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.naver',     # naver login
     'cart',
     'coupon',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -151,11 +152,11 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'    # the page after login
 
-AWS_ACCESS_KEY_ID = # my access key
-AWS_SECRET_ACCESS_KEY = # my secret access key
+AWS_ACCESS_KEY_ID = #
+AWS_SECRET_ACCESS_KEY = #
 
 AWS_REGION = 'ap-northeast-2'
-AWS_STORAGE_BUCKET_NAME = # my bucket name
+AWS_STORAGE_BUCKET_NAME = #
 AWS_S3_CUSTOM_DOMAIN = f's3.{AWS_REGION}.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}'
 
 AWS_S3_FILE_OVERWRITE = False
@@ -171,6 +172,9 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'config.s3media.MediaStorage'
 
 CART_ID = 'cart_item'
+
+IAMPORT_KEY = #
+IAMPORT_SECRET = #
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
