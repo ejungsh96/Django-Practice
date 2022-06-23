@@ -16,3 +16,9 @@
 
 - To learn RESTful API in Django
 - Source: https://www.youtube.com/watch?v=i5JykvxUk_A by Caleb Curry
+
+---
+
+### Project server_dev
+
+- Youtube Tutorial Playlist: https://www.youtube.com/playlist?list=PLHQvFs5CMVoQMcglHmtPz9ShY058H3veh by mychew__
